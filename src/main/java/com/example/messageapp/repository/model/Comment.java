@@ -30,6 +30,7 @@ public class Comment {
 
     @NotNull
     @ManyToOne
+    @JoinColumn(name = "thread_id")
     private Thread thread;
 
     public Comment(String content) {

@@ -6,6 +6,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,13 +38,14 @@ public class Thread {
     @NotNull
     private int vote;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "thread", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "threads", orphanRemoval = true)
     private List<Comment> comments;
 
     public Thread(String title, String content) {
         this.title = title;
         this.content = content;
         this.vote = 0;
+        this.comments = new ArrayList<>();
     }
 
     public Long getId() {
